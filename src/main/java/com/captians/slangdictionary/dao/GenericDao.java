@@ -7,5 +7,6 @@ public interface GenericDao<T> {
     T upload(T t);
     List<T> findAll();
     T findOne(Long id);
+    T findByName(String name);
     void delete(T t);
 }

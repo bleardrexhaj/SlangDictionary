@@ -31,6 +31,11 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     }
 
     @Override
+    public T findByName(String name) {
+        return null;
+    }
+
+    @Override
     public void delete(T t) {
 
     }
