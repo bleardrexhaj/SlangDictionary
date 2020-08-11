@@ -13,28 +13,32 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     // declaretion of category name
-    private String catName;
+    private String name;
 
     // declaretion of category description
-    private String catDescription;
+    private String description;
 
     public Long getId() {
         return id;
     }
 
-    public String getCatName() {
-        return catName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setCatName(String catName) {
-        this.catName = catName;
+    public String getName() {
+        return name;
     }
 
-    public String getCatDescription() {
-        return catDescription;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCatDescription(String catDescription) {
-        this.catDescription = catDescription;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
