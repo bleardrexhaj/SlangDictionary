@@ -4,23 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-public class SlangdictionaryApplication implements CommandLineRunner {
-
-    @Autowired
-    TestDataLoad testDataLoad;
+@ImportResource({"classpath*:context/applicationContext.xml"})
+public class SlangdictionaryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SlangdictionaryApplication.class, args);
-    }
 
-    @Override
-    public void run(final String... s) {
-        try{
-            testDataLoad.loadJSON();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+        SpringApplication.run(SlangdictionaryApplication.class, args);
     }
 }
