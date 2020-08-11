@@ -31,9 +31,6 @@ public class User {
     @Valid
     private Address singleAddress;
 
-    @Column(columnDefinition = "boolean DEFAULT false")
-    private boolean enabled;
-
     @OneToOne(fetch=FetchType.LAZY,  cascade = CascadeType.ALL)
     @JoinColumn(name="userId")
     private UserCredentials userCredentials;

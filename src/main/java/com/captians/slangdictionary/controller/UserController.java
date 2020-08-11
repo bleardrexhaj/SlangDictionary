@@ -29,6 +29,6 @@ public class UserController {
         } else {
             userService.save(user);
         }
-        return "/login";
+        return "homepage";
     }
 }

@@ -13,15 +13,18 @@ public class UserCredentials {
     String userName;
     @Column(name = "PASSWORD", nullable = false)
     String password;
+
+    @Transient
     String verifyPassword;
+
+    @Column(columnDefinition = "boolean DEFAULT false")
     Boolean enabled;
 
     @OneToOne(mappedBy = "userCredentials", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "credential_authority", joinColumns = {@JoinColumn(name = "credential_id")},
-            inverseJoinColumns = {@JoinColumn(name = "authority_id", unique = true)})
+    @JoinColumn(name = "auth_id")
     List<Authority> authority = new ArrayList<Authority>();
 
     public String getUserName() {
@@ -62,14 +65,6 @@ public class UserCredentials {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<Authority> getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(List<Authority> authority) {
-        this.authority = authority;
     }
 
 }
