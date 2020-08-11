@@ -11,8 +11,8 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     private EntityManager persistence;
 
     @Override
-    public T save(T t) {
-        return null;
+    public void save(T t) {
+        persistence.persist(t);
     }
 
     @Override

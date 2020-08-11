@@ -1,12 +1,12 @@
 package com.captians.slangdictionary.model;
 
 import com.captians.slangdictionary.validation.EmptyOrSize;
-import net.bytebuddy.implementation.bind.annotation.Empty;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,10 +27,21 @@ public class User {
     @NotEmpty(message = "{User.email.Empty}")
     private String email;
 
+    @Transient
     @Valid
-    @OneToMany
+    private Address singleAddress;
+
+    @Column(columnDefinition = "boolean DEFAULT false")
+    private boolean enabled;
+
+    @OneToOne(fetch=FetchType.LAZY,  cascade = CascadeType.ALL)
+    @JoinColumn(name="userId")
+    private UserCredentials userCredentials;
+
+    @Valid
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private Set<Address> address;
+    private Set<Address> address = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -66,6 +77,14 @@ public class User {
 
     public Set<Address> getAddress() {
         return address;
+    }
+
+    public Address getSingleAddress() {
+        return singleAddress;
+    }
+
+    public void setSingleAddress(Address singleAddress) {
+        this.singleAddress = singleAddress;
     }
 
     public void setAddress(Set<Address> address) {

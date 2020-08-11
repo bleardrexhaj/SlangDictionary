@@ -1,10 +1,7 @@
 package com.captians.slangdictionary.model;
 
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Entity
 public class Address {
@@ -22,9 +19,9 @@ public class Address {
     private String country;
 
     @NotNull
-    @Range(min = 6, max = 9, message = "{User.address.zip}")
+    @Size(min = 6, max = 9, message = "{User.address.zip}")
     @Column(name = "zip_code")
-    private int zipCode;
+    private String zipCode;
 
     public long getId() {
         return id;
@@ -58,11 +55,12 @@ public class Address {
         this.country = country;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
 }

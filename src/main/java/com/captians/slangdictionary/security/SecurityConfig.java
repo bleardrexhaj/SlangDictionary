@@ -1,3 +1,4 @@
+/*
 package com.captians.slangdictionary.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     {
 
     }
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth)
             throws Exception
@@ -25,3 +25,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .roles("USER");
     }
 }
+*/
