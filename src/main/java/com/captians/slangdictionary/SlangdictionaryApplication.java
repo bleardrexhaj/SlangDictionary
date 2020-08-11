@@ -10,8 +10,10 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource({"classpath*:context/applicationContext.xml"})
 public class SlangdictionaryApplication {
 
-    public static void main(String[] args) {
+    @Autowired
+    TestDataLoad testDataLoad;
 
+    public static void main(String[] args) {
         SpringApplication.run(SlangdictionaryApplication.class, args);
     }
 }

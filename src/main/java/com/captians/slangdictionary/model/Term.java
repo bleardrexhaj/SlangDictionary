@@ -14,6 +14,7 @@ public class Term {
 
     String word;
     String definition;
+    String example;
 
     Long thumbs_up;
     Long thumbs_down;
@@ -46,6 +47,14 @@ public class Term {
 
     public void setDefinition(String definition) {
         this.definition = definition;
+    }
+
+    public String getExample() {
+        return example;
+    }
+
+    public void setExample(String example) {
+        this.example = example;
     }
 
     public Long getThumbs_up() {

@@ -1,5 +1,6 @@
 package com.captians.slangdictionary.service.impl;
 
+import com.captians.slangdictionary.dao.TermDao;
 import com.captians.slangdictionary.dao.impl.TermDaoImpl;
 import com.captians.slangdictionary.model.Term;
 import com.captians.slangdictionary.service.TermService;
@@ -14,7 +15,7 @@ import java.util.List;
 public class TermServiceImpl implements TermService {
 
     @Autowired
-    TermDaoImpl termDao;
+    TermDao termDao;
 
     public List<Term> findAll(){
         return termDao.findAll();
@@ -23,6 +24,6 @@ public class TermServiceImpl implements TermService {
         return termDao.findByName(name);
     }
     public void addTerm(Term term){
-        termDao.upload(term);
+        termDao.save(term);
     }
 }
