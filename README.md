@@ -1,25 +1,25 @@
 # SlangDictionary
 Enterprise Architecture - Group Project
 
-#Technologies Used
-· Spring
+# Technologies Used
+1. Spring
 
-· Hibernate JPA
+2. Hibernate JPA
 
-· Email
+3. Email
 
-· Rest
+4. Rest
 
-· Spring Security
+5. Spring Security
 
-· AOP
+6. AOP
 
-· Email
+7. Email
 
-· Messaging
+8. Messaging
 
-· Testing
+9. Testing
 
-· Hibernate Performance
+10. Hibernate Performance
 
-· MySQL
+11. MySQL
