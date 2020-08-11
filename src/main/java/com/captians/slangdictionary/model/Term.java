@@ -88,4 +88,8 @@ public class Term {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public String dateToString(){
+        return written_on.getDate() + "/" + written_on.getMonth() + "/" + this.written_on.getYear();
+    }
 }

@@ -8,6 +8,11 @@ import java.util.List;
 
 @Repository
 public class TermDaoImpl extends GenericDaoImpl<Term> implements TermDao {
+
+    public TermDaoImpl(){
+        super.setDaoType(Term.class);
+    }
+
     public List<Term> findAll(){
         return super.findAll();
     }

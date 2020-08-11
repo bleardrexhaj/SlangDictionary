@@ -39,7 +39,6 @@ public class TestDataLoad {
             List<Term> list = objectMapper.readValue(jsonString, new TypeReference<List<Term>>(){});
             for(Term t : list) {
                 termService.addTerm(t);
-                System.out.println(t.getAuthor());
             }
         }catch(Throwable t){
             t.printStackTrace();

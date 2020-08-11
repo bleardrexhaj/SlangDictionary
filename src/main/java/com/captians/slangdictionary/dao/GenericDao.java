@@ -3,6 +3,7 @@ package com.captians.slangdictionary.dao;
 import java.util.List;
 
 public interface GenericDao<T> {
+    void setDaoType(Class<T> type);
     void save(T t);
     T upload(T t);
     List<T> findAll();

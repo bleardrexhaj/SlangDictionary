@@ -10,6 +10,12 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     @PersistenceContext
     private EntityManager persistence;
 
+    protected Class<T> daoType;
+
+    public void setDaoType(Class<T> type) {
+        daoType = type;
+    }
+
     @Override
     public void save(T t) {
         persistence.persist(t);
@@ -22,7 +28,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public List<T> findAll() {
-        return null;
+        return persistence.createQuery( "from " + daoType.getName()).getResultList();
     }
 
     @Override

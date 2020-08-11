@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface TermService {
 
-    public List<Term> findAll();
-    public Term findByName(String name);
-    public void addTerm(Term term);
+    List<Term> findAll();
+    Term findByName(String name);
+    void addTerm(Term term);
 
 }

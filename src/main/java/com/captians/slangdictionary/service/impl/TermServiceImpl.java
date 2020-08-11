@@ -15,7 +15,7 @@ import java.util.List;
 public class TermServiceImpl implements TermService {
 
     @Autowired
-    TermDao termDao;
+    private TermDao termDao;
 
     public List<Term> findAll(){
         return termDao.findAll();
