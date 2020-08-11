@@ -25,7 +25,7 @@
 <body id="root">
 <div class="ui borderless blue inverted pointing menu">
     <div class="ui container">
-        <a class="header active item" href="#root">Home</a>
+        <a class="header active item" href="/home">Home</a>
         <a class="item" href="#root">Category</a>
         <a class="item" href="#root">Press</a>
         <a class="item" href="#root">New hires</a>
@@ -46,14 +46,16 @@
     <div class="row" id="article">
         <div class="eleven wide column">
             <c:forEach var="category" items="${categoryList}" varStatus="tagStatus">
-                <a class="ui divider" href="/category/list/{category}">
+
+                <a href="/category/list/{category}">
                     <h2 class="ui large header">
                         <div class="content">${category.name}</div>
                         <div class="sub header">
-                            ${category.description}
+                                ${category.description}
                         </div>
                     </h2>
                 </a>
+                <div class="ui divider"></div>
             </c:forEach>
         </div>
 
