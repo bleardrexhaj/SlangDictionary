@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GenericDaoImpl<T> implements GenericDao<T> {
     @PersistenceContext
-    private EntityManager persistence;
+    protected EntityManager persistence;
 
     protected Class<T> daoType;
 
@@ -33,12 +33,12 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public T findOne(Long id) {
-        return null;
+        return persistence.find(daoType,id);
     }
 
     @Override
     public T findByName(String name) {
-        return null;
+        return (T) persistence.createQuery("from "+ daoType.getName() +" where name="+name).getSingleResult();
     }
 
     @Override

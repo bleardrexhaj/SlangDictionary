@@ -2,7 +2,7 @@ INSERT INTO authentication values ("Bleard", 1, "$2a$10$2wjnYreXH80/08HCdtMDMu/B
 INSERT INTO authorities values(1, "USER", "bleard", "Bleard")
 INSERT INTO USER values(1,"bleardd@gmail.com", "Bleard", "Rexhaj", "Bleard")
 
-INSERT INTO authentication values ("Enkhjargal", 2, "$2a$10$2wjnYreXH80/08HCdtMDMu/BbnjJt9zSvGjcritdobH6o/a1uUlN6")
+INSERT INTO authentication values ("Enkhjargal", 1, "$2a$10$2wjnYreXH80/08HCdtMDMu/BbnjJt9zSvGjcritdobH6o/a1uUlN6")
 INSERT INTO authorities values(2, "USER", "Enkhjargal", "Enkhjargal")
 INSERT INTO USER values(2,"enkhjargal@gmail.com", "Enkhjargal", "Gansukh", "Enkhjargal")
 

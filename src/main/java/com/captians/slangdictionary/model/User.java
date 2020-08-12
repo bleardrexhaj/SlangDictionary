@@ -3,6 +3,7 @@ package com.captians.slangdictionary.model;
 import com.captians.slangdictionary.validation.EmptyOrSize;
 
 import javax.persistence.*;
+import javax.validation.Constraint;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -25,6 +26,7 @@ public class User {
 
     @Email(message = "{User.email}")
     @NotEmpty(message = "{User.email.Empty}")
+    @Column(unique = true)
     private String email;
 
     @Transient
@@ -32,7 +34,7 @@ public class User {
     private Address singleAddress;
 
     @Valid
-    @OneToOne(fetch=FetchType.LAZY,  cascade = CascadeType.ALL)
+    @OneToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserCredentials userCredentials = new UserCredentials();
 

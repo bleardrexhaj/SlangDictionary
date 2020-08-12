@@ -1,13 +1,14 @@
 package com.captians.slangdictionary.aspect;
 
-import com.captians.slangdictionary.model.Address;
-import com.captians.slangdictionary.model.Authority;
-import com.captians.slangdictionary.model.User;
-import com.captians.slangdictionary.model.UserCredentials;
+import com.captians.slangdictionary.model.*;
+import com.captians.slangdictionary.service.EmailService;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,11 @@ import java.util.Set;
 @Aspect
 @Component
 public class UserAspect {
-    @Pointcut("execution(* com.captians.slangdictionary.service.UserService.*(..))")
+
+    @Autowired
+    EmailService emailService;
+
+    @Pointcut("execution(* com.captians.slangdictionary.service.UserService.save(..))")
     public void addAddress(){
     }
 
@@ -37,7 +42,7 @@ public class UserAspect {
 
         //Adding a Role User to user by default.
         UserCredentials userCredentials = new UserCredentials();
-        userCredentials.setEnabled(true);
+        userCredentials.setEnabled(false);
         userCredentials.setUserName(user.getFirstName());
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         userCredentials.setPassword(bCryptPasswordEncoder.encode(user.getUserCredentials().getPassword()));
@@ -54,5 +59,20 @@ public class UserAspect {
         userCredentials.setAuthority(authorityList);
         userCredentials.setUser(user);
         user.setUserCredentials(userCredentials);
+    }
+
+    @After("addAddress() && addArgs(user)")
+    public void afterExecution(JoinPoint joinPoint, User user){
+        EmailConfirmationToken confirmationToken = new EmailConfirmationToken(user);
+
+        emailService.save(confirmationToken);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(user.getEmail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setFrom("bleardd@gmail.com");
+        mailMessage.setText("To confirm your account, please click here : "+"http://localhost:8080/confirm-account?token="+confirmationToken.getConfirmationToken());
+
+        emailService.sendEmail(mailMessage);
     }
 }

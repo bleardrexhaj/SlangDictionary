@@ -19,4 +19,14 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         userDao.save(user);
     }
+
+    @Override
+    public void update(User user) {
+        userDao.update(user);
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userDao.findUserByEmail(email);
+    }
 }
