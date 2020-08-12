@@ -5,12 +5,18 @@
   Time: 10:13 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/semantic.min.css">
+    <title>HomePage!</title>
     <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -20,11 +26,20 @@
 <body id="root">
 <div class="ui borderless blue inverted pointing menu">
     <div class="ui container">
-        <a class="header active item" href="#root">Home</a>
+        <a class="header active item" href="${pageContext.request.contextPath}/">Home</a>
         <a class="item" href="#root">New feature</a>
         <a class="item" href="#root">Press</a>
-        <a class="item" href="#root">New hires</a>
-        <a class="item" href="#root">About</a>
+        <div class="right menu">
+            <security:authorize access="!isAuthenticated()">
+                <a class="item" href="${pageContext.request.contextPath}/login">Login!</a>
+                <a class="item" href="${pageContext.request.contextPath}/register">Register!</a>
+            </security:authorize>
+            <security:authorize access="isAuthenticated()">
+                <a class="item" href="${pageContext.request.contextPath}/addTerm">Add!</a>
+                <a class="item" href="${pageContext.request.contextPath}/manageTerms">Terms!</a>
+                <a class="item" href="${pageContext.request.contextPath}/logout">LogOut!</a>
+            </security:authorize>
+        </div>
     </div>
 </div>
 <div class="ui grid stackable container">
@@ -40,56 +55,30 @@
     </div>
     <div class="row" id="article">
         <div class="eleven wide column">
-            <h2 class="ui large header">
-                <div class="content">Term #1</div>
-                <div class="sub header">
-                    March 6, 2017 by <a href="#root">Jack</a>
-                </div>
-            </h2>
-            <div class="ui hidden divider"></div>
-            <p>
-                description
-            </p>
-
-
-            <%--<div class="ui secondary segment">
-                <code>Example code block</code>
-            </div>--%>
-
-
-            <div class="ui hidden divider"></div>
-            <h2 class="ui large header">
-                <div class="content">Term #2</div>
-                <div class="sub header">
-                    April 1, 2027 by <a href="#root">Mac</a>
-                </div>
-            </h2>
-            <div class="ui hidden divider"></div>
-            <p>
-                description
-            </p>
-
-            <div class="ui hidden divider"></div>
-            <h2 class="ui large header">
-                <div class="content">Term #3</div>
-                <div class="sub header">
-                    Autumn 13, 2019 by <a href="#root">Semantic</a>
-                </div>
-            </h2>
-            <div class="ui hidden divider"></div>
-            <p>
-                description
-            </p>
-
-            <div class="ui hidden divider"></div>
-            <div class="ui basic circular huge button">
-                <a href="#root">Previous</a>
-            </div>
-            <div class="ui basic circular huge button">
-                <a href="#root">Next</a>
-            </div>
-            <div class="ui hidden divider"></div>
+            <%--                <div class="ui cards">--%>
+            <%--                    <c:forEach var="term" items="${termList}" varStatus="tagStatus">--%>
+            <%--                        <div class="card">--%>
+            <%--                            <div class="content">--%>
+            <%--                                <div class="header">${term.word}</div>--%>
+            <%--                                <div class="meta"> ${term.written_on} by <a>${term.author}</a></div>--%>
+            <%--                                <div class="description">--%>
+            <%--                                    ${term.definition}--%>
+            <%--                                </div>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </c:forEach>--%>
+            <%--                </div>--%>
+            <c:forEach var="term" items="${termList}" varStatus="tagStatus">
+                <h2 class="ui large header">
+                    <div class="content">${term.word}</div>
+                    <div class="sub header">
+                            ${term.definition}
+                    </div>
+                </h2>
+                <p>${term.written_on} by <a>${term.author}</a></p>
+            </c:forEach>
         </div>
+
         <div class="four wide right floated column">
             <div class="ui secondary segment">
                 <h4 class="ui header">About</h4>
@@ -129,4 +118,4 @@
 
 
 </body>
-</html>
+

@@ -71,6 +71,16 @@
             <spring:input type="number" name="Zip" placeholder="Zip" path="singleAddress.zipCode"/>
         </div>
 
+        <div class="field">
+            <spring:label path="userCredentials.password">Password</spring:label>
+            <spring:input type="text" name="password" placeholder="Password" path="userCredentials.password"/>
+        </div>
+
+        <div class="field">
+            <spring:label path="userCredentials.verifyPassword">Confirm Password</spring:label>
+            <spring:input type="text" name="verifyPassword" placeholder="Password" path="userCredentials.verifyPassword"/>
+        </div>
+
         <spring:button class="ui button" type="submit">Submit</spring:button>
     </spring:form>
 </div>

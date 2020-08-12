@@ -19,7 +19,7 @@ public class Address {
     private String country;
 
     @NotNull
-    @Size(min = 6, max = 9, message = "{User.address.zip}")
+    @Size(min = 5, max = 9, message = "{User.address.zip}")
     @Column(name = "zip_code")
     private String zipCode;
 

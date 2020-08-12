@@ -1,31 +1,40 @@
 package com.captians.slangdictionary.model;
 
+
+import com.captians.slangdictionary.validation.FieldMatch;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity(name = "Authentication")
+@FieldMatch(first = "password", second = "verifyPassword", message = "{User.password}")
 public class UserCredentials {
 
     @Id
     @Column(name = "USER", nullable = false, unique = true, length = 127)
-    String userName;
+    private String userName;
+
+    @NotEmpty(message = "{Password.NotEmpty}")
+    @Size(min = 6, max = 60,message = "{Password.Size}")
     @Column(name = "PASSWORD", nullable = false)
-    String password;
+    private String password;
 
     @Transient
-    String verifyPassword;
+    private String verifyPassword;
 
     @Column(columnDefinition = "boolean DEFAULT false")
-    Boolean enabled;
+    private Boolean enabled;
 
     @OneToOne(mappedBy = "userCredentials", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "auth_id")
-    List<Authority> authority = new ArrayList<Authority>();
+    private List<Authority> authority = new ArrayList<Authority>();
 
     public String getUserName() {
         return userName;
@@ -67,4 +76,11 @@ public class UserCredentials {
         this.user = user;
     }
 
+    public List<Authority> getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(List<Authority> authority) {
+        this.authority = authority;
+    }
 }

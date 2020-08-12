@@ -1,6 +1,7 @@
 package com.captians.slangdictionary.model;
 
 import com.captians.slangdictionary.validation.EmptyOrSize;
+import com.captians.slangdictionary.validation.FieldMatch;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -31,9 +32,10 @@ public class User {
     @Valid
     private Address singleAddress;
 
+    @Valid
     @OneToOne(fetch=FetchType.LAZY,  cascade = CascadeType.ALL)
     @JoinColumn(name="userId")
-    private UserCredentials userCredentials;
+    private UserCredentials userCredentials = new UserCredentials();
 
     @Valid
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -86,5 +88,13 @@ public class User {
 
     public void setAddress(Set<Address> address) {
         this.address = address;
+    }
+
+    public UserCredentials getUserCredentials() {
+        return userCredentials;
+    }
+
+    public void setUserCredentials(UserCredentials userCredentials) {
+        this.userCredentials = userCredentials;
     }
 }
