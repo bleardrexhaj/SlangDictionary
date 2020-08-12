@@ -13,26 +13,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/semantic.min.css">
-    <title>Register</title>
-    <script
-            src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
-    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
-</head>
+<jsp:include page="header.jsp"/>
 <body id="root">
-    <div class="ui borderless blue inverted pointing menu">
-        <div class="ui container">
-            <a class="header active item" href="#root">Home</a>
-            <a class="item" href="#root">Category</a>
-            <a class="item" href="#root">Press</a>
-            <a class="item" href="#root">New hires</a>
-            <a class="item" href="#root">About</a>
-        </div>
-    </div>
+<jsp:include page="menu.jsp"/>
     <div class="ui grid stackable container">
         <div class="row" id="page-header">
             <div class="ui basic segment">

@@ -13,35 +13,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/semantic.min.css">
-    <title>HomePage!</title>
-    <script
-            src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
-    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
-</head>
+<jsp:include page="header.jsp"/>
 <body id="root">
-<div class="ui borderless blue inverted pointing menu">
-    <div class="ui container">
-        <a class="header active item" href="${pageContext.request.contextPath}/">Home</a>
-        <a class="item" href="#root">New feature</a>
-        <a class="item" href="#root">Press</a>
-        <div class="right menu">
-            <security:authorize access="!isAuthenticated()">
-                <a class="item" href="${pageContext.request.contextPath}/login">Login!</a>
-                <a class="item" href="${pageContext.request.contextPath}/register">Register!</a>
-            </security:authorize>
-            <security:authorize access="isAuthenticated()">
-                <a class="item" href="${pageContext.request.contextPath}/addTerm">Add!</a>
-                <a class="item" href="${pageContext.request.contextPath}/manageTerms">Terms!</a>
-                <a class="item" href="${pageContext.request.contextPath}/logout">LogOut!</a>
-            </security:authorize>
-        </div>
-    </div>
-</div>
+<jsp:include page="menu.jsp"/>
 <div class="ui grid stackable container">
     <div class="row" id="page-header">
         <div class="ui basic segment">
