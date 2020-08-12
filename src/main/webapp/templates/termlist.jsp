@@ -29,27 +29,17 @@
         </div>
         <div class="row" id="article">
             <div class="eleven wide column">
-<%--                <div class="ui cards">--%>
-<%--                    <c:forEach var="term" items="${termList}" varStatus="tagStatus">--%>
-<%--                        <div class="card">--%>
-<%--                            <div class="content">--%>
-<%--                                <div class="header">${term.word}</div>--%>
-<%--                                <div class="meta"> ${term.written_on} by <a>${term.author}</a></div>--%>
-<%--                                <div class="description">--%>
-<%--                                    ${term.definition}--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </c:forEach>--%>
-<%--                </div>--%>
+
                 <c:forEach var="term" items="${termList}" varStatus="tagStatus">
-                    <h2 class="ui large header">
-                        <div class="content">${term.word}</div>
-                        <div class="sub header">
-                                ${term.definition}
-                        </div>
-                    </h2>
-                    <p>${term.written_on} by <a>${term.author}</a></p>
+                    <div class="ui raised segment">
+                        <h2 class="ui large header">
+                            <div class="content">${term.word}</div>
+                            <div class="sub header">
+                                    ${term.definition}
+                            </div>
+                        </h2>
+                        <p>${term.written_on} by <a>${term.author}</a></p>
+                    </div>
                 </c:forEach>
             </div>
 
