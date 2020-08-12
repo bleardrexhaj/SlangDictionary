@@ -29,7 +29,7 @@ public class UserCredentials {
     @Column(columnDefinition = "boolean DEFAULT false")
     private Boolean enabled;
 
-    @OneToOne(mappedBy = "userCredentials", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "userCredentials")
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
