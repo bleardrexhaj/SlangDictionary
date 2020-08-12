@@ -14,12 +14,10 @@ Enterprise Architecture - Group Project
 
 6. AOP
 
-7. Email
+7. Messaging
 
-8. Messaging
+8. Testing
 
-9. Testing
+9. Hibernate Performance
 
-10. Hibernate Performance
-
-11. MySQL
+10. MySQL

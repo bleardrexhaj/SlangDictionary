@@ -25,5 +25,41 @@
     "written_on":"2017-07-27T00:00:00.000Z",
     "example":"Hello, can I help you with something?",
     "thumbs_down":20
+  },
+  {
+    "definition":"Acronym for Model View Controller, a software architecture pattern/[framework]/paradigm related to graphical user interfaces.",
+    "thumbs_up":13,
+    "author":"CanonCat",
+    "word":"MVC",
+    "written_on":"2013-10-13T00:00:00.000Z",
+    "example":"It can be argued that a text [editor] uses MVC; the [controller] parses keyboard and mouse [input] and updates the data in the document and the view of the editor and the document.",
+    "thumbs_down":0
+  },
+  {
+    "definition":"The widely used acronym for 'Marvel vs. Capcom' which is a 2d arcade fighting game. Numerics can also be added to [designate] the series of Marvel vs. [Capcom] games such as MVC1 and [MVC2].",
+    "thumbs_up":51,
+    "author":"Jin Saotome",
+    "word":"MVC",
+    "written_on":"2004-11-03T00:00:00.000Z",
+    "example":"\"Yo, wanna hit the mall and play a little MVC? I'll [school you] [wit'] my [Mags], Cable, Storm team fo sho.\"",
+    "thumbs_down":35
+  },
+  {
+    "definition":"The most valuable cunt. Used to describe the [hotest] slut [available] on a [night out].",
+    "thumbs_up":10,
+    "author":"TheTurkish",
+    "word":"mvc",
+    "written_on":"2012-03-05T00:00:00.000Z",
+    "example":"[Hollie] is such a mvc man, [I bet] she has [no pants] on either.",
+    "thumbs_down":10
+  },
+  {
+    "definition":"MVC is a [ESports] team that is made up of young players\n\nThey also are [Gods] at any games they play and are really [nice people]",
+    "thumbs_up":0,
+    "author":"MVC Clan",
+    "word":"MVC",
+    "written_on":"2019-09-10T00:00:00.000Z",
+    "example":"MVC is a [ESports] Group of [gamers] the (MVC) clan also [recruiting]\r\n(MVC) is one of the Best Clans",
+    "thumbs_down":0
   }
 ]

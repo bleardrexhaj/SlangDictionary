@@ -1,9 +1,9 @@
 package com.captians.slangdictionary.model;
 
 import com.captians.slangdictionary.validation.EmptyOrSize;
-import com.captians.slangdictionary.validation.FieldMatch;
 
 import javax.persistence.*;
+import javax.validation.Constraint;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -26,6 +26,7 @@ public class User {
 
     @Email(message = "{User.email}")
     @NotEmpty(message = "{User.email.Empty}")
+    @Column(unique = true)
     private String email;
 
     @Transient
@@ -33,14 +34,17 @@ public class User {
     private Address singleAddress;
 
     @Valid
-    @OneToOne(fetch=FetchType.LAZY,  cascade = CascadeType.ALL)
-    @JoinColumn(name="userId")
+    @OneToOne(fetch=FetchType.EAGER,  cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private UserCredentials userCredentials = new UserCredentials();
 
     @Valid
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private Set<Address> address = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Term> terms = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -96,5 +100,13 @@ public class User {
 
     public void setUserCredentials(UserCredentials userCredentials) {
         this.userCredentials = userCredentials;
+    }
+
+    public Set<Term> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(Set<Term> terms) {
+        this.terms = terms;
     }
 }

@@ -29,37 +29,30 @@
     </div>
     <div class="row" id="article">
         <div class="eleven wide column">
-            <%--                <div class="ui cards">--%>
-            <%--                    <c:forEach var="term" items="${termList}" varStatus="tagStatus">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="content">--%>
-            <%--                                <div class="header">${term.word}</div>--%>
-            <%--                                <div class="meta"> ${term.written_on} by <a>${term.author}</a></div>--%>
-            <%--                                <div class="description">--%>
-            <%--                                    ${term.definition}--%>
-            <%--                                </div>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </c:forEach>--%>
-            <%--                </div>--%>
             <c:forEach var="term" items="${termList}" varStatus="tagStatus">
-                <h2 class="ui large header">
-                    <div class="content">${term.word}</div>
-                    <div class="sub header">
-                            ${term.definition}
+                <div class="ui raised segment">
+                    <h2 class="ui large header">
+                        <div class="content"><i>${term.word}</i></div>
+                        <div class="sub header" style="margin-top: 20px;">
+                                ${term.definition}
+                        </div>
+                    </h2>
+                    <p>${term.written_on} by <a>${term.author}</a></p>
+
+                    <div>
+                        <img src="./../icons/thumb-up.png" style="width: 20px;" /><span style="margin-lef: 10px; margin-right: 30px;">${term.thumbs_up}</span>
+                        <img src="./../icons/thumb-down.png" style="width: 20px; padding-top: 5px;" /><span style="margin-lef: 10px; margin-right: 30px;">${term.thumbs_down}</span>
                     </div>
-                </h2>
-                <p>${term.written_on} by <a>${term.author}</a></p>
+                </div>
             </c:forEach>
+
         </div>
 
         <div class="four wide right floated column">
             <div class="ui secondary segment">
                 <h4 class="ui header">About</h4>
                 <p>
-                    Etiam porta <i>sem malesuada magna mollis euismod</i>. Cras mattis
-                    consectetur purus sit amet fermentum. Aenean lacinia bibendum
-                    nulla sed consectetur.
+                    Slang dictionary will be a project where users could simply browse new slang words every day. The web application ?SLANG DICTIONARY? will provide an easy and convenient way for users to register and add slang words, the normal guest users can simply browse through and read about the words they are interested in. Registration will require a valid Email address for identity verification, guests will be able to add comments and to vote regarding the words, Word publishers will be able to edit their slang added words.
                 </p>
             </div>
             <h4 class="ui header">Archives</h4>
