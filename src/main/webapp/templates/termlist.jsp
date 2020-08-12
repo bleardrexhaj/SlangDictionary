@@ -27,7 +27,7 @@
     <div class="ui borderless blue inverted pointing menu">
         <div class="ui container">
             <a class="header active item" href="#root">Home</a>
-            <a class="item" href="#root">New feature</a>
+            <a class="item" href="#root">Category</a>
             <a class="item" href="#root">Press</a>
             <a class="item" href="#root">New hires</a>
             <a class="item" href="#root">About</a>
