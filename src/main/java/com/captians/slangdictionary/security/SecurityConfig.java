@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/myterms").hasAuthority("USER")
                 .antMatchers("/").permitAll()
                 .and().formLogin();
+        httpSecurity.cors().and().csrf().disable();
     }
 
     @Bean

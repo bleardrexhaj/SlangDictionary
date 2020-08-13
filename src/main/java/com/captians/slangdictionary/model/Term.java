@@ -1,6 +1,7 @@
 package com.captians.slangdictionary.model;
 
 import com.captians.slangdictionary.validation.EmptyOrSize;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -38,10 +39,12 @@ public class Term {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
+    @JsonIgnore
     private Category category;
 
     public Category getCategory() { return category; }
