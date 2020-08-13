@@ -11,7 +11,9 @@
     <div class="ui container">
         <a class="header active item" href="${pageContext.request.contextPath}/">Home</a>
         <a class="item" href="${pageContext.request.contextPath}/category/">Categories</a>
-        <a class="item" href="#root">Press</a>
+        <security:authorize access="isAuthenticated()">
+            <a class="item" href="${pageContext.request.contextPath}/myterms">My Terms</a>
+        </security:authorize>
         <div class="right menu">
             <security:authorize access="!isAuthenticated()">
                 <a class="item" href="${pageContext.request.contextPath}/login">Login!</a>

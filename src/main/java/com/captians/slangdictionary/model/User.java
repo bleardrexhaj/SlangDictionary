@@ -43,7 +43,7 @@ public class User {
     @JoinColumn(name = "user_id")
     private Set<Address> address = new HashSet<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Term> terms = new HashSet<>();
 
     public Long getId() {

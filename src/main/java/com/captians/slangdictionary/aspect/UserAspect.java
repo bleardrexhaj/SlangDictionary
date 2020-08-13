@@ -32,7 +32,6 @@ public class UserAspect {
     public void addArgs(User user){
     }
 
-
     @Before("addAddress() && addArgs(user)")
     public void beforeExecution(JoinPoint joinPoint, User user){
         //Assigning the address to the user.
@@ -51,7 +50,7 @@ public class UserAspect {
         //Setting up Roles for this specific user.
         List<Authority> authorityList = new ArrayList<>();
         Authority authority = new Authority();
-        authority.setAuthority("User");
+        authority.setAuthority("USER");
         authority.setUsername(user.getFirstName());
         authorityList.add(authority);
 
@@ -70,7 +69,7 @@ public class UserAspect {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Complete Registration!");
-        mailMessage.setFrom("bleardd@gmail.com");
+        mailMessage.setFrom("{spring.mail.username}"); // TODO test this
         mailMessage.setText("To confirm your account, please click here : "+"http://localhost:8080/confirm-account?token="+confirmationToken.getConfirmationToken());
 
         emailService.sendEmail(mailMessage);
