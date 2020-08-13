@@ -2,11 +2,17 @@ package com.captians.slangdictionary.controller;
 
 import com.captians.slangdictionary.model.Category;
 import com.captians.slangdictionary.model.Term;
+import com.captians.slangdictionary.model.User;
 import com.captians.slangdictionary.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -26,4 +32,18 @@ public class CategoryController {
         model.addAttribute("categoryList", categoryList);
         return "categoryList";
     }
+
+    @RequestMapping(value = "/{category}", method = RequestMethod.GET)
+    public String terms(@PathVariable("category") String categoryName, Model model){
+        System.out.println(categoryName);
+        List<Category> categoryList = categoryService.findAll();
+        for(Category cat : categoryList){
+            if(cat.getName().equals(categoryName)){
+                model.addAttribute("termList", cat.getTerms());
+                return "categoryTerms";
+            }
+        }
+        return "";
+    }
+
 }

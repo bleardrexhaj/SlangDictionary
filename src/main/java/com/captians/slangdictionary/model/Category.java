@@ -4,7 +4,9 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,8 +20,10 @@ public class Category {
     // declaretion of category description
     private String description;
 
-    @OneToMany(mappedBy = "category")
-    private Set<Term> terms = new HashSet<>();
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private List<Term> terms = new ArrayList<Term>();
 
     public Long getId() {
         return id;
@@ -43,5 +47,13 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Term> getTerms() {
+        return terms;
+    }
+
+    public void setTerms(List<Term> terms) {
+        this.terms = terms;
     }
 }
