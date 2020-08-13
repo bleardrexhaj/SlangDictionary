@@ -16,8 +16,7 @@ public class TermController {
     @Autowired
     TermService termService;
 
-
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = {"/", "/list"})
     public String getTermList(Model model) {
         System.out.println("============= list ==============");
         List<Term> termList = termService.findAll();

@@ -6,11 +6,13 @@ import com.captians.slangdictionary.service.EmailService;
 import com.captians.slangdictionary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -29,13 +31,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult){
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             return register(user);
         } else {
             userService.save(user);
         }
-        return "redirect:/home";
+        redirectAttributes.addFlashAttribute("email", user.getEmail());
+        return "redirect:/confirmAccount";
     }
 
     @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
@@ -57,5 +60,11 @@ public class UserController {
         }
 
         return "redirect:/home";
+    }
+
+    @RequestMapping("/confirmAccount")
+    public String confirmAccount(Model model, @ModelAttribute("email") String email){
+        model.addAttribute("email", email);
+        return "account-confirmation";
     }
 }
