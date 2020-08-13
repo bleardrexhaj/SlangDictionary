@@ -17,7 +17,7 @@
 <jsp:include page="menu.jsp"/>
 
 <div class="ui content container">
-    <spring:form class="ui form" modelAttribute="term" action="/register" method="post">
+    <spring:form class="ui form" modelAttribute="term" action="/term/addTerm" method="POST">
 
         <spring:errors cssClass="ui red basic label" path="*"/>
 
@@ -33,29 +33,8 @@
 
         <div class="field">
             <spring:label path="example">Example</spring:label>
-            <spring:input type="text" name="example" placeholder="Example" path="example"/>
+            <spring:textarea type="text" name="example" placeholder="Example" path="example"/>
         </div>
-
-        <div class="field">
-            <spring:label path="author">author</spring:label>
-            <spring:input type="text" name="author" placeholder="author" path="author"/>
-        </div>
-
-        <div class="field">
-            <spring:label path="singleAddress.zipCode">Zip</spring:label>
-            <spring:input type="number" name="Zip" placeholder="Zip" path="singleAddress.zipCode"/>
-        </div>
-
-        <div class="field">
-            <spring:label path="userCredentials.password">Password</spring:label>
-            <spring:input type="text" name="password" placeholder="Password" path="userCredentials.password"/>
-        </div>
-
-        <div class="field">
-            <spring:label path="userCredentials.verifyPassword">Confirm Password</spring:label>
-            <spring:input type="text" name="verifyPassword" placeholder="Password" path="userCredentials.verifyPassword"/>
-        </div>
-
         <spring:button class="ui button" type="submit">Submit</spring:button>
     </spring:form>
 </div>

@@ -13,16 +13,16 @@ public class Term {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @EmptyOrSize(message = "{User.name}")
+    @EmptyOrSize(message = "{User.name}", min = 1, max=512)
     String word;
 
     @Lob
-    @EmptyOrSize(message = "{User.name}")
+    @EmptyOrSize(message = "{User.name}", min = 1, max=512)
     @Column(length = 512)
     String definition;
 
     @Lob
-    @EmptyOrSize(message = "{User.name}")
+    @EmptyOrSize(message = "{User.name}", min = 1, max=512)
     @Column(length = 512)
     String example;
 
