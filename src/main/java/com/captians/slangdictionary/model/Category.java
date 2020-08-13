@@ -18,9 +18,7 @@ public class Category {
     // declaretion of category description
     private String description;
 
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
+    @OneToMany(mappedBy = "category")
     private Set<Term> terms = new HashSet<>();
 
     public Long getId() {

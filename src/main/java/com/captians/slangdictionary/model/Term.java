@@ -1,6 +1,10 @@
 package com.captians.slangdictionary.model;
 
+import com.captians.slangdictionary.validation.EmptyOrSize;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -9,19 +13,39 @@ public class Term {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @EmptyOrSize(message = "{User.name}", min = 1, max=512)
     String word;
+
+    @Lob
+    @EmptyOrSize(message = "{User.name}", min = 1, max=512)
+    @Column(length = 512)
     String definition;
+
+    @Lob
+    @EmptyOrSize(message = "{User.name}", min = 1, max=512)
+    @Column(length = 512)
     String example;
 
     Long thumbs_up;
     Long thumbs_down;
 
+    @NotNull
+    @Temporal(value = TemporalType.DATE)
     Date written_on;
+
     String author;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public Category getCategory() { return category; }
+
+    public void setCategory(Category category) { this.category = category; }
 
     public User getUser() {
         return user;
