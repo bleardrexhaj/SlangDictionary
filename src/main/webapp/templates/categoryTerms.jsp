@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Erdenesaikhan
-  Date: 8/11/2020
-  Time: 3:26 PM
+  Date: 8/12/2020
+  Time: 8:27 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,26 +19,26 @@
     <div class="row" id="page-header">
         <div class="ui basic segment">
             <h1 class="ui huge header">
-                <div class="content">List of categories</div>
+                <div class="content">Random Slang Words</div>
                 <div class="sub header">
-                    Search through words grouped by category.
+                    Search through thousands of slang words.
                 </div>
             </h1>
         </div>
     </div>
     <div class="row" id="article">
         <div class="eleven wide column">
-            <c:forEach var="category" items="${categoryList}" varStatus="tagStatus">
 
-                <a href="/category/${category.name}">
+            <c:forEach var="term" items="${termList}" varStatus="tagStatus">
+                <div class="ui raised segment">
                     <h2 class="ui large header">
-                        <div class="content">${category.name}</div>
+                        <div class="content">${term.word}</div>
                         <div class="sub header">
-                                ${category.description}
+                                ${term.definition}
                         </div>
                     </h2>
-                </a>
-                <div class="ui divider"></div>
+                    <p>${term.written_on} by <a>${term.author}</a></p>
+                </div>
             </c:forEach>
         </div>
 
