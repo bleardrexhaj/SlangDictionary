@@ -50,7 +50,7 @@ public class UserAspect {
         //Setting up Roles for this specific user.
         List<Authority> authorityList = new ArrayList<>();
         Authority authority = new Authority();
-        authority.setAuthority("User");
+        authority.setAuthority("USER");
         authority.setUsername(user.getFirstName());
         authorityList.add(authority);
 

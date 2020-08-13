@@ -28,4 +28,10 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao{
         Query query = persistence.createQuery("select u from User u where u.email =:email");
         return (User) query.setParameter("email", email).getSingleResult();
     }
+
+    @Override
+    public User findUserByUserName(String userName) {
+        Query query = persistence.createQuery("select u from User u where u.userCredentials.userName =:userName");
+        return (User) query.setParameter("userName", userName).getSingleResult();
+    }
 }
