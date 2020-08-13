@@ -7,7 +7,7 @@ import java.util.List;
 public interface TermService {
 
     List<Term> findAll();
-    Term findByName(String name);
+    Term findByWord(String word);
     void addTerm(Term term);
-
+    public void update(Term t);
 }

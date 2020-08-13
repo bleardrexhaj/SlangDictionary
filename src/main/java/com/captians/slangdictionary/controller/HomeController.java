@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -43,5 +44,33 @@ public class HomeController {
     @ModelAttribute("termList")
     public List<Term> getTerms(){
         return termService.findAll();
+    }
+
+    @RequestMapping("/thumbup/{term_name}")
+    public String thumbup(@PathVariable("term_name") String term_name){
+        List<Term> termList = termService.findAll();
+        for(Term t : termList){
+            if(t.getWord().equals(term_name)){
+                Long likes = t.getThumbs_up();
+                likes += 1;
+                t.setThumbs_up(likes);
+                termService.update(t);
+            }
+        }
+        return "redirect:/home";
+    }
+
+    @RequestMapping("/thumbdown/{term_name}")
+    public String thumbdown(@PathVariable("term_name") String term_name){
+        List<Term> termList = termService.findAll();
+        for(Term t : termList){
+            if(t.getWord().equals(term_name)){
+                Long dislikes = t.getThumbs_down();
+                dislikes += 1;
+                t.setThumbs_down(dislikes);
+                termService.update(t);
+            }
+        }
+        return "redirect:/home";
     }
 }

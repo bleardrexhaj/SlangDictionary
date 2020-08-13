@@ -23,7 +23,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public T upload(T t) {
-        return null;
+        return persistence.merge(t);
     }
 
     @Override
@@ -39,6 +39,10 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     @Override
     public T findByName(String name) {
         return (T) persistence.createQuery("from "+ daoType.getName() +" where name="+name).getSingleResult();
+    }
+
+    public T findByWord(String word) {
+        return (T) persistence.createQuery("from "+ daoType.getName() +" where word="+word).getSingleResult();
     }
 
     @Override

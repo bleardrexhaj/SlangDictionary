@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface TermDao {
     public List<Term> findAll();
-    public Term findByName(String name);
+    public Term findByWord(String word);
     public void save(Term t);
+    public void update(Term t);
 }

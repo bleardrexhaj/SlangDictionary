@@ -20,10 +20,11 @@ public class TermServiceImpl implements TermService {
     public List<Term> findAll(){
         return termDao.findAll();
     }
-    public Term findByName(String name){
-        return termDao.findByName(name);
+    public Term findByWord(String word){
+        return termDao.findByWord(word);
     }
     public void addTerm(Term term){
         termDao.save(term);
     }
+    public void update(Term t){ termDao.update(t); }
 }

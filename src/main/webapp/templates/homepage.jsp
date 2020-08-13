@@ -40,8 +40,8 @@
                     <p>${term.written_on} by <a>${term.author}</a></p>
 
                     <div>
-                        <img src="./../icons/thumb-up.png" style="width: 20px;" /><span style="margin-lef: 10px; margin-right: 30px;">${term.thumbs_up}</span>
-                        <img src="./../icons/thumb-down.png" style="width: 20px; padding-top: 5px;" /><span style="margin-lef: 10px; margin-right: 30px;">${term.thumbs_down}</span>
+                        <a href="/thumbup/${term.word}"><img src="./../icons/thumb-up.png" style="width: 20px;" /><span style="margin-lef: 10px; margin-right: 30px;">${term.thumbs_up}</span></a>
+                        <a href="/thumbdown/${term.word}"><img src="./../icons/thumb-down.png" style="width: 20px; padding-top: 5px;" /><span style="margin-lef: 10px; margin-right: 30px;">${term.thumbs_down}</span></a>
                     </div>
                 </div>
             </c:forEach>

@@ -16,10 +16,12 @@ public class TermDaoImpl extends GenericDaoImpl<Term> implements TermDao {
     public List<Term> findAll(){
         return super.findAll();
     }
-    public Term findByName(String name){
-        return super.findByName(name);
+    public Term findByWord(String word){
+        return super.findByWord(word);
     }
     public void save(Term t){
         super.save(t);
     }
+
+    public void update(Term t) { super.upload(t); }
 }

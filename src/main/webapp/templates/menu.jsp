@@ -17,7 +17,7 @@
                 <a class="item" href="${pageContext.request.contextPath}/register">Register!</a>
             </security:authorize>
             <security:authorize access="isAuthenticated()">
-                <a class="item" href="${pageContext.request.contextPath}/addTerm">Add!</a>
+                <a class="item" href="${pageContext.request.contextPath}/term/add">Add!</a>
                 <a class="item" href="${pageContext.request.contextPath}/myterms">Terms!</a>
                 <a class="item" href="${pageContext.request.contextPath}/logout">LogOut!</a>
             </security:authorize>
