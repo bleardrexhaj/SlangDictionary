@@ -7,6 +7,8 @@
 --%>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -35,6 +37,13 @@
             <spring:label path="example">Example</spring:label>
             <spring:textarea type="text" name="example" placeholder="Example" path="example"/>
         </div>
+
+<%--        <spring:select path="category">--%>
+<%--            <c:forEach var="cat" items="${categoryList}">--%>
+<%--                <spring:option value="${cat}" label="${cat}" />--%>
+<%--            </c:forEach>--%>
+<%--        </spring:select>--%>
+
         <spring:button class="ui button" type="submit">Submit</spring:button>
     </spring:form>
 </div>

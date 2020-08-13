@@ -2,6 +2,7 @@ package com.captians.slangdictionary.controller;
 
 import com.captians.slangdictionary.model.Term;
 import com.captians.slangdictionary.model.User;
+import com.captians.slangdictionary.other.SearchInput;
 import com.captians.slangdictionary.service.TermService;
 import com.captians.slangdictionary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class HomeController {
     UserService userService;
 
     @RequestMapping({"/", "/home"})
-    public String home(@ModelAttribute("termList") List<Term> terms){
+    public String home(@ModelAttribute("termList") List<Term> terms, @ModelAttribute("searchInput") SearchInput searchInput){
         return "homepage";
     }
 
@@ -45,6 +44,10 @@ public class HomeController {
     public List<Term> getTerms(){
         return termService.findAll();
     }
+//
+//    @ModelAttribute("searchInput")
+//    public SearchInput getSearchInput(){ return new SearchInput(); }
+
 
     @RequestMapping("/thumbup/{term_name}")
     public String thumbup(@PathVariable("term_name") String term_name){

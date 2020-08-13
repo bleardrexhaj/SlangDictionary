@@ -7,6 +7,7 @@
 --%>
 <%--<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
@@ -27,6 +28,19 @@
             </h1>
         </div>
     </div>
+<%--    <div class="ui grid" style="margin-top: 20px; margin-bottom: 20px;">--%>
+<%--        <div class="ui input focus">--%>
+<%--            <input type="text" placeholder="Search..." value="${word}">--%>
+<%--        </div>--%>
+<%--        <button class="ui primary button" onclick="location.href='/search/${word}'">Search</button>--%>
+<%--    </div>--%>
+    <spring:form class="ui grid" cssStyle="margin-bottom: 20px; margin-top: 20px;" modelAttribute="searchInput" action="/term/search${searchInput.input}" method="GET" >
+        <div class="ui input focus">
+            <spring:input type="text" name="word" placeholder="Search..." path="input"/>
+        </div>
+        <spring:button class="ui primary button" type="submit">Search</spring:button>
+    </spring:form>
+
     <div class="row" id="article">
         <div class="eleven wide column">
             <c:forEach var="term" items="${termList}" varStatus="tagStatus">
@@ -35,6 +49,10 @@
                         <div class="content"><i>${term.word}</i></div>
                         <div class="sub header" style="margin-top: 20px;">
                                 ${term.definition}
+                        </div>
+                        <div class="ui divider"></div>
+                        <div class="sub header" style="margin-bottom: 20px;">
+                                ${term.example}
                         </div>
                     </h2>
                     <p>${term.written_on} by <a>${term.author}</a></p>

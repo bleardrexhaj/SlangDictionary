@@ -13,6 +13,7 @@ public class Term {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(unique = true)
     @EmptyOrSize(message = "{User.name}", min = 1, max=512)
     String word;
 
