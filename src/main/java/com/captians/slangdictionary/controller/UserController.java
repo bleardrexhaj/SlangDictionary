@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -47,7 +46,7 @@ public class UserController {
     {
         EmailConfirmationToken token = null;
         try {
-            emailService.findByConfirmationToken(confirmationToken);
+            token = emailService.findByConfirmationToken(confirmationToken);
         } catch (Exception e){
             return "accountConfirmation/account-confirmation-error";
         }
