@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -44,7 +45,12 @@ public class UserController {
     @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
     public String confirmUserAccount(@RequestParam("token")String confirmationToken)
     {
-        EmailConfirmationToken token = emailService.findByConfirmationToken(confirmationToken);
+        EmailConfirmationToken token = null;
+        try {
+            emailService.findByConfirmationToken(confirmationToken);
+        } catch (Exception e){
+            return "accountConfirmation/account-confirmation-error";
+        }
 
         if(token != null)
         {
@@ -52,19 +58,17 @@ public class UserController {
             user.getUserCredentials().setEnabled(true);
             user.getUserCredentials().setVerifyPassword(user.getUserCredentials().getPassword());
             userService.update(user);
-            //create a jsp for success
+            return "accountConfirmation/account-confirmation-success";
         }
         else
         {
-            //Create a jsp for failure
+            return "accountConfirmation/account-confirmation-error";
         }
-
-        return "redirect:/home";
     }
 
     @RequestMapping("/confirmAccount")
     public String confirmAccount(Model model, @ModelAttribute("email") String email){
         model.addAttribute("email", email);
-        return "account-confirmation";
+        return "accountConfirmation/account-confirmation";
     }
 }

@@ -13,9 +13,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <body id="root">
-<jsp:include page="menu.jsp"/>
+<jsp:include page="../menu.jsp"/>
 <div class="ui grid stackable container">
     <div class="row" id="page-header">
         <div class="ui basic segment">
