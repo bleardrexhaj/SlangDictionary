@@ -11,9 +11,6 @@
     <div class="ui container">
         <a class="header active item" href="${pageContext.request.contextPath}/">Home</a>
         <a class="item" href="${pageContext.request.contextPath}/category/">Categories</a>
-        <security:authorize access="isAuthenticated()">
-            <a class="item" href="${pageContext.request.contextPath}/myterms">My Terms</a>
-        </security:authorize>
         <div class="right menu">
             <security:authorize access="!isAuthenticated()">
                 <a class="item" href="${pageContext.request.contextPath}/login">Login!</a>
@@ -21,7 +18,7 @@
             </security:authorize>
             <security:authorize access="isAuthenticated()">
                 <a class="item" href="${pageContext.request.contextPath}/addTerm">Add!</a>
-                <a class="item" href="${pageContext.request.contextPath}/manageTerms">Terms!</a>
+                <a class="item" href="${pageContext.request.contextPath}/myterms">Terms!</a>
                 <a class="item" href="${pageContext.request.contextPath}/logout">LogOut!</a>
             </security:authorize>
         </div>
