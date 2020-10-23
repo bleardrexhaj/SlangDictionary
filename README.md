@@ -21,3 +21,5 @@ Enterprise Architecture - Group Project
 9. Hibernate Performance
 
 10. MySQL
+
+11.JWT Auth
