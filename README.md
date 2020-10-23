@@ -22,4 +22,6 @@ Enterprise Architecture - Group Project
 
 10. MySQL
 
-11.JWT Auth
+11. JWT Auth
+
+12. Restfull API-s /api/
