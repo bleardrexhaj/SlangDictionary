@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
     public Category findByName(String name){
         return categoryDao.findByName(name);
     }
-    public void addCategory(Category category){
+    public void addCategory(Category category) throws Exception {
         categoryDao.save(category);
     }
 }

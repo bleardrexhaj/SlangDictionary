@@ -6,16 +6,16 @@ import javax.validation.constraints.*;
 @Entity
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "{User.address}")
+    @NotEmpty(message = "{address.street.notEmpty}")
     private String street;
 
-    @NotEmpty(message = "{User.address}")
+    @NotEmpty(message = "{address.city.notEmpty}")
     private String city;
 
-    @NotEmpty(message = "{User.address}")
+    @NotEmpty(message = "{address.country.notEmpty}")
     private String country;
 
     @NotNull

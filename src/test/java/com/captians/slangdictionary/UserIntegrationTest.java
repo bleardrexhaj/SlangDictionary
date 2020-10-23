@@ -31,7 +31,7 @@ public class UserIntegrationTest {
     private MockMvc mockMvc;
 
     @Test
-    public void registerUser() {
+    public void registerUser() throws Exception {
         User user = new User();
         user.setFirstName("John");
         user.setLastName("Doe");
@@ -47,11 +47,7 @@ public class UserIntegrationTest {
         address.setStreet("1th st");
         address.setZipCode("10460");
 
-        Set<Address> addresses = new HashSet<>();
-        addresses.add(address);
-
-        user.setAddress(addresses);
-
+        user.setSingleAddress(address);
         userService.save(user);
 
         User findUser = userService.findUserByEmail(user.getEmail());

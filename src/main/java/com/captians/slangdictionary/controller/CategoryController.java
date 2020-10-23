@@ -1,19 +1,13 @@
 package com.captians.slangdictionary.controller;
 
 import com.captians.slangdictionary.model.Category;
-import com.captians.slangdictionary.model.Term;
-import com.captians.slangdictionary.model.User;
 import com.captians.slangdictionary.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import java.util.List;
 
 @Controller
@@ -24,7 +18,6 @@ public class CategoryController {
 
     @RequestMapping(value = "")
     public String getCategoryList(Model model){
-        System.out.println("============= category list ==============");
         List<Category> categoryList = categoryService.findAll();
         for (Category t: categoryList) {
             System.out.println(t.getName());
@@ -35,7 +28,6 @@ public class CategoryController {
 
     @RequestMapping(value = "/{category}", method = RequestMethod.GET)
     public String terms(@PathVariable("category") String categoryName, Model model){
-        System.out.println(categoryName);
         List<Category> categoryList = categoryService.findAll();
         for(Category cat : categoryList){
             if(cat.getName().equals(categoryName)){
@@ -45,5 +37,4 @@ public class CategoryController {
         }
         return "";
     }
-
 }

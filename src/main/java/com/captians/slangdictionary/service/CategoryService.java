@@ -8,5 +8,5 @@ import java.util.List;
 public interface CategoryService {
     List<Category> findAll();
     Category findByName(String name);
-    void addCategory(Category category);
+    void addCategory(Category category) throws Exception;
 }

@@ -19,7 +19,7 @@ public class TermDaoImpl extends GenericDaoImpl<Term> implements TermDao {
     public Term findByWord(String word){
         return super.findByWord(word);
     }
-    public void save(Term t){
+    public void save(Term t) {
         super.save(t);
     }
 

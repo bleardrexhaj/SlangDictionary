@@ -8,5 +8,5 @@ import java.util.List;
 public interface CategoryDao {
     public List<Category> findAll();
     public Category findByName(String name);
-    public void save(Category t);
+    public void save(Category t) throws Exception;
 }

@@ -4,7 +4,6 @@ import com.captians.slangdictionary.model.EmailConfirmationToken;
 import com.captians.slangdictionary.model.User;
 import com.captians.slangdictionary.service.EmailService;
 import com.captians.slangdictionary.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,11 +18,14 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    EmailService emailService;
+    private final EmailService emailService;
+
+    public UserController(UserService userService, EmailService emailService) {
+        this.userService = userService;
+        this.emailService = emailService;
+    }
 
     @RequestMapping("/register")
     public String register(@ModelAttribute("user") User user){
@@ -31,7 +33,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws Exception {
         if(bindingResult.hasErrors()){
             return register(user);
         } else {

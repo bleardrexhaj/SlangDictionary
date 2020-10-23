@@ -16,7 +16,7 @@ public class CategoryDaoImpl extends GenericDaoImpl<Category> implements Categor
     public List<Category> findAll(){
         return super.findAll();
     }
-    public void save(Category t){
+    public void save(Category t) {
         super.save(t);
     }
 }

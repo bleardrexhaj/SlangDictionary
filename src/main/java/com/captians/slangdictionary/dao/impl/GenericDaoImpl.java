@@ -4,6 +4,7 @@ import com.captians.slangdictionary.dao.GenericDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 public class GenericDaoImpl<T> implements GenericDao<T> {
@@ -18,7 +19,7 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @Override
     public void save(T t) {
-        persistence.persist(t);
+       persistence.persist(t);
     }
 
     @Override

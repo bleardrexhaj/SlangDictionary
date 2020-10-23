@@ -1,7 +1,6 @@
 package com.captians.slangdictionary.service.impl;
 
 import com.captians.slangdictionary.dao.TermDao;
-import com.captians.slangdictionary.dao.impl.TermDaoImpl;
 import com.captians.slangdictionary.model.Term;
 import com.captians.slangdictionary.service.TermService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,12 @@ import java.util.List;
 @Transactional
 public class TermServiceImpl implements TermService {
 
+    private final TermDao termDao;
+
     @Autowired
-    private TermDao termDao;
+    public TermServiceImpl(TermDao termDao) {
+        this.termDao = termDao;
+    }
 
     public List<Term> findAll(){
         return termDao.findAll();
